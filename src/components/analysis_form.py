@@ -26,7 +26,7 @@ def show_analysis_form(ai_service, auth_service, session_id: str):
     if source == "📤 Upload PDF":
         uploaded_file = st.file_uploader(
             "Upload your blood report PDF (max 20MB, 50 pages)",
-            type=["pdf"],
+            type=["pdf", "PDF"],
             help="Only PDF files containing blood test results are accepted.",
         )
         if uploaded_file:
