@@ -65,8 +65,6 @@ st.markdown(
     
     /* Deep Hide Streamlit Branding & Menus */
     #MainMenu {visibility: hidden !important;}
-    header {visibility: hidden !important;}
-    [data-testid="stHeader"] {display: none !important;}
     [data-testid="stToolbar"] {display: none !important;}
 
     /* Premium Chat Bubbles - Deep Space Style */

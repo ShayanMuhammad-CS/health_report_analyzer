@@ -21,8 +21,8 @@ def show_sidebar(auth_service, session_manager, ai_service):
 
         # ── New Session Button ───────────────────────────────────────────────
         if st.button("New Session", use_container_width=True, type="primary"):
-            session_manager.create_new_session(auth_service)
-            st.rerun()
+            if session_manager.create_new_session(auth_service):
+                st.rerun()
 
         st.markdown("<br/><h4>Your Sessions</h4>", unsafe_allow_html=True)
 
