@@ -15,7 +15,7 @@ def show_sidebar(auth_service, session_manager, ai_service):
         name = user.get("name", "User") if user else "User"
         email = user.get("email", "") if user else ""
 
-        st.markdown(f"### <span style='color:#ffa014;'>●</span> {name}", unsafe_allow_html=True)
+        st.markdown(f"### <span style='color:var(--accent-primary);'>●</span> {name}", unsafe_allow_html=True)
         st.caption(email)
         st.divider()
 

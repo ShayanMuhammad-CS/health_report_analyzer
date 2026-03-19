@@ -29,27 +29,38 @@ st.markdown(
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
 
+    :root {
+        --bg-main: #0D0D0D;
+        --bg-surface: #1A1A1A;
+        --text-primary: #FFFFFF;
+        --text-secondary: #B3B3B3;
+        --accent-primary: #6C5DD3;
+        --accent-secondary: #22C1C3;
+        --border-subtle: #333333;
+        --accent-primary-hover: #7D6FE0;
+        --accent-secondary-hover: #2ACDD0;
+        --disabled: #555555;
+    }
+
     /* Global Typography Fixes (Preserving Streamlit Icons) */
-    html, body, p, div, span, h1, h2, h3, h4, h5, h6, li, a, label, input, textarea {
-        font-family: 'Outfit', sans-serif;
+    html, body, p, div, span, h1, h2, h3, h4, h5, h6, li, a, label, input, textarea, [class*="st-"] {
+        font-family: 'Outfit', sans-serif !important;
     }
     
     .material-symbols-rounded, .material-symbols-outlined, [class*="stIcon"] {
         font-family: 'Material Symbols Rounded', 'Material Symbols Outlined', sans-serif !important;
     }
 
-    /* Oladoc Theme */
+    /* Deep Space Theme Base */
     .stApp, [data-testid="stAppViewContainer"] { 
-        background: linear-gradient(135deg, #f8f9fa, #ffffff, #f1f3f5);
-        color: #212529;
+        background-color: var(--bg-main) !important;
+        color: var(--text-primary) !important;
     }
 
-    /* Glassmorphism Sidebar */
+    /* Dark Panel Sidebar */
     [data-testid="stSidebar"] {
-        background: rgba(255, 255, 255, 0.95) !important;
-        backdrop-filter: blur(16px) !important;
-        -webkit-backdrop-filter: blur(16px);
-        border-right: 1px solid rgba(0, 19, 68, 0.05);
+        background-color: var(--bg-surface) !important;
+        border-right: 1px solid var(--border-subtle) !important;
     }
     
     /* Deep Hide Streamlit Branding & Menus */
@@ -58,7 +69,7 @@ st.markdown(
     [data-testid="stHeader"] {display: none !important;}
     [data-testid="stToolbar"] {display: none !important;}
 
-    /* Premium Chat Bubbles - Base Override */
+    /* Premium Chat Bubbles - Deep Space Style */
     [data-testid="stChatMessage"] {
         background: transparent !important;
         border: none !important;
@@ -73,162 +84,158 @@ st.markdown(
         display: none !important;
     }
 
-    /* User Messages (Aligned Right, Oladoc Navy) */
+    /* User Messages (Aligned Right, Deep Space Purple) */
     [data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-user"]) {
         flex-direction: row-reverse !important;
     }
     [data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-user"]) .stMarkdown {
-        background: #001344 !important;
+        background: var(--accent-primary) !important;
         color: white !important;
         border-radius: 20px 20px 4px 20px !important;
         padding: 12px 18px !important;
         display: inline-block !important;
         margin-left: auto !important;
-        box-shadow: 0 5px 15px rgba(0, 19, 68, 0.2) !important;
+        box-shadow: 0 5px 15px rgba(108, 93, 211, 0.2) !important;
     }
-    /* Stop the internal markdown container from taking 100% width so it bubbles */
     [data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-user"]) [data-testid="stMarkdownContainer"] {
         width: max-content !important;
         max-width: 85% !important;
         margin-left: auto !important;
     }
 
-    /* Assistant Messages (Aligned Left, Light Glass) */
+    /* Assistant Messages (Aligned Left, Surface background) */
     [data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-assistant"]) .stMarkdown {
-        background: #ffffff !important;
-        border: 1px solid rgba(0, 19, 68, 0.1) !important;
-        color: #212529 !important;
+        background: var(--bg-surface) !important;
+        border: 1px solid var(--border-subtle) !important;
+        color: var(--text-primary) !important;
         border-radius: 20px 20px 20px 4px !important;
         padding: 12px 18px !important;
         display: inline-block !important;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
     }
     [data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-assistant"]) [data-testid="stMarkdownContainer"] {
         width: max-content !important;
         max-width: 90% !important;
     }
 
-    /* Floating Chat Input Pill */
+    /* Floating Chat Input pill */
     [data-testid="stChatInput"] {
         padding-bottom: 2rem !important;
     }
     [data-testid="stChatInput"] textarea {
-        background: rgba(255, 255, 255, 0.95) !important;
-        backdrop-filter: blur(16px) !important;
-        border: 1px solid rgba(0, 19, 68, 0.1) !important;
+        background: var(--bg-surface) !important;
+        border: 1px solid var(--border-subtle) !important;
         border-radius: 30px !important;
         padding: 15px 50px 15px 25px !important;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08) !important;
-        color: #212529 !important;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3) !important;
+        color: var(--text-primary) !important;
     }
 
-    /* Vibrant Glow Primary Buttons */
+    /* Accent Primary Buttons */
     .stButton > button[kind="primary"] {
-        background: #ffa014 !important;
+        background: var(--accent-primary) !important;
         border: none !important;
         color: white !important;
-        font-weight: 800 !important;
+        font-weight: 600 !important;
         border-radius: 8px !important;
         padding: 0.6rem 2rem !important;
-        box-shadow: 0 4px 15px rgba(255, 160, 20, 0.3) !important;
+        box-shadow: 0 4px 15px rgba(108, 93, 211, 0.3) !important;
         transition: all 0.3s ease !important;
     }
     
     .stButton > button[kind="primary"]:hover {
         transform: translateY(-2px) scale(1.02) !important;
-        box-shadow: 0 8px 25px rgba(255, 160, 20, 0.4) !important;
-        background: #e68a00 !important;
+        box-shadow: 0 8px 25px rgba(108, 93, 211, 0.4) !important;
+        background: var(--accent-primary-hover) !important;
+    }
+    
+    .stButton > button:disabled {
+        background: var(--disabled) !important;
+        color: #B3B3B3 !important;
+        box-shadow: none !important;
+        transform: none !important;
     }
 
-    /* Glass Forms (Cards) */
+    /* Dark Surfaces (Cards) */
     [data-testid="stForm"] {
-        background: #ffffff !important;
-        border: 1px solid rgba(0, 19, 68, 0.08) !important;
+        background: var(--bg-surface) !important;
+        border: 1px solid var(--border-subtle) !important;
         border-radius: 12px !important;
         padding: 2rem !important;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
     }
 
-    /* Mobile Scaling Constraint */
-    @media (max-width: 768px) {
-        .block-container {
-            padding-left: 1rem !important;
-            padding-right: 1rem !important;
-            padding-top: 2rem !important;
-        }
-        [data-testid="stForm"] {
-            padding: 1.2rem !important;
-        }
+    /* Tab Styling */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 8px;
+        background-color: transparent !important;
+    }
+    .stTabs [data-baseweb="tab"] {
+        height: 45px;
+        white-space: pre-wrap;
+        background-color: var(--bg-surface) !important;
+        border-radius: 8px 8px 0px 0px !important;
+        color: var(--text-secondary) !important;
+        border: 1px solid var(--border-subtle) !important;
+        border-bottom: none !important;
+    }
+    .stTabs [aria-selected="true"] {
+        background-color: var(--accent-primary) !important;
+        color: white !important;
     }
 
-    /* Skeleton Loader Animation */
-    .skeleton-loader {
-        background: linear-gradient(90deg, rgba(0,19,68,0.03) 25%, rgba(0,19,68,0.08) 50%, rgba(0,19,68,0.03) 75%);
-        background-size: 200% 100%;
-        animation: loading 1.5s infinite;
-        border-radius: 8px;
-        height: 20px;
-        margin-bottom: 10px;
-    }
-    @keyframes loading {
-        0% { background-position: 200% 0; }
-        100% { background-position: -200% 0; }
-    }
-
-    /* Glass Inputs */
-    .stTextInput>div>div>input, .stTextArea>div>div>textarea {
-        background: #ffffff !important;
-        border: 1px solid rgba(0, 19, 68, 0.15) !important;
-        color: #212529 !important;
+    /* Dark Inputs */
+    .stTextInput>div>div>input, .stTextArea>div>div>textarea, .stSelectbox [data-baseweb="select"] {
+        background: var(--bg-surface) !important;
+        border: 1px solid var(--border-subtle) !important;
+        color: var(--text-primary) !important;
         border-radius: 8px !important;
         transition: all 0.3s !important;
     }
     
     .stTextInput>div>div>input:focus, .stTextArea>div>div>textarea:focus {
-        border-color: #ffa014 !important;
-        box-shadow: 0 0 0 2px rgba(255, 160, 20, 0.2) !important;
-        background: white !important;
+        border-color: var(--accent-primary) !important;
+        box-shadow: 0 0 0 2px rgba(108, 93, 211, 0.2) !important;
     }
 
-    /* Expander Accents */
+    /* Expander Styling */
     .streamlit-expanderHeader { 
         font-weight: 600 !important; 
-        color: #001344 !important; 
+        color: var(--text-primary) !important; 
         border-radius: 8px !important;
-        background: rgba(0, 19, 68, 0.03) !important;
+        background: var(--bg-surface) !important;
     }
     
     [data-testid="stExpander"] {
-        border: 1px solid rgba(0, 19, 68, 0.08) !important;
+        border: 1px solid var(--border-subtle) !important;
         border-radius: 8px !important;
-        overflow: hidden;
-        background: #ffffff !important;
+        background: var(--bg-surface) !important;
     }
 
-    /* Analysis Result Box */
-    .analysis-box {
-        background: #ffffff;
-        border-left: 4px solid #ffa014;
-        border-radius: 8px;
-        padding: 1.5rem;
-        margin-top: 1rem;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-    }
-    
-    /* Custom Scrollbar for modern feel */
+    /* Custom Scrollbar */
     ::-webkit-scrollbar {
         width: 8px;
         height: 8px;
     }
     ::-webkit-scrollbar-track {
-        background: transparent;
+        background: var(--bg-main);
     }
     ::-webkit-scrollbar-thumb {
-        background: rgba(0, 19, 68, 0.15);
+        background: var(--border-subtle);
         border-radius: 8px;
     }
     ::-webkit-scrollbar-thumb:hover {
-        background: rgba(0, 19, 68, 0.3);
+        background: var(--text-secondary);
+    }
+    
+    /* Links */
+    a {
+        color: var(--accent-secondary) !important;
+        text-decoration: none !important;
+    }
+    a:hover {
+        color: var(--accent-secondary-hover) !important;
+        text-decoration: underline !important;
     }
     </style>
     """,
@@ -279,8 +286,8 @@ def main():
         st.markdown(
             """
             <div style='text-align:center; padding: 4rem 1rem;'>
-                <h2 style='color:#001344;'>Welcome to DOCUS AI!</h2>
-                <p style='color:#475569; font-size:1.1rem;'>
+                <h2 style='color:var(--text-primary);'>Welcome to DOCUS AI!</h2>
+                <p style='color:var(--text-secondary); font-size:1.1rem;'>
                     Start by creating a <strong>New Session</strong> from the sidebar,
                     then upload your blood report PDF or use the sample report.
                 </p>
