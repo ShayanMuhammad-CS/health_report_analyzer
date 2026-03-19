@@ -1,0 +1,12 @@
+streamlit>=1.42.0
+supabase==2.10.0
+gotrue>=2.10.0
+groq>=0.18.0
+pdfplumber>=0.11.5
+filetype>=1.2.0
+langchain
+langchain-community
+langchain-huggingface
+langchain-text-splitters
+faiss-cpu
+sentence-transformers
