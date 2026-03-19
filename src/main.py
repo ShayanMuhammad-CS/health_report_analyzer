@@ -29,14 +29,18 @@ st.markdown(
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
 
-    /* Global Typography */
-    html, body, [class*="st-"] {
-        font-family: 'Outfit', sans-serif !important;
+    /* Global Typography Fixes (Preserving Streamlit Icons) */
+    html, body, p, div, span, h1, h2, h3, h4, h5, h6, li, a, label, input, textarea {
+        font-family: 'Outfit', sans-serif;
+    }
+    
+    .material-symbols-rounded, .material-symbols-outlined, [class*="stIcon"] {
+        font-family: 'Material Symbols Rounded', 'Material Symbols Outlined', sans-serif !important;
     }
 
-    /* Gorgeous Animated Dark Gradient Background */
+    /* Gorgeous Colorful Aurora Gradient Background */
     .stApp, [data-testid="stAppViewContainer"] { 
-        background: linear-gradient(135deg, #0f172a, #1e1b4b, #1e293b, #0f172a);
+        background: linear-gradient(-45deg, #0B1021, #311557, #81225B, #311557, #0B1021);
         background-size: 300% 300%;
         animation: gradientBG 15s ease infinite;
         color: #f8fafc;
@@ -127,22 +131,22 @@ st.markdown(
         color: white !important;
     }
 
-    /* Glow Primary Buttons */
+    /* Vibrant Glow Primary Buttons */
     .stButton > button[kind="primary"] {
-        background: linear-gradient(135deg, #2563EB, #4F46E5) !important;
+        background: linear-gradient(135deg, #E11D48, #9333EA) !important;
         border: none !important;
         color: white !important;
         font-weight: 800 !important;
         border-radius: 12px !important;
         padding: 0.6rem 2rem !important;
-        box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3) !important;
+        box-shadow: 0 4px 15px rgba(225, 29, 72, 0.4) !important;
         transition: all 0.3s ease !important;
     }
     
     .stButton > button[kind="primary"]:hover {
         transform: translateY(-2px) scale(1.02) !important;
-        box-shadow: 0 8px 25px rgba(79, 70, 229, 0.5) !important;
-        background: linear-gradient(135deg, #1D4ED8, #4338CA) !important;
+        box-shadow: 0 8px 25px rgba(147, 51, 234, 0.6) !important;
+        background: linear-gradient(135deg, #BE123C, #7E22CE) !important;
     }
 
     /* Glass Forms (Cards) */
