@@ -15,12 +15,12 @@ def show_sidebar(auth_service, session_manager, ai_service):
         name = user.get("name", "User") if user else "User"
         email = user.get("email", "") if user else ""
 
-        st.markdown(f"### 👤 {name}")
+        st.markdown(f"### <span style='color:#818CF8;'>●</span> {name}", unsafe_allow_html=True)
         st.caption(email)
         st.divider()
 
         # ── New Session Button ───────────────────────────────────────────────
-        if st.button("➕ New Session", use_container_width=True, type="primary"):
+        if st.button("✨ New Session", use_container_width=True, type="primary"):
             session_manager.create_new_session(auth_service)
             st.rerun()
 
@@ -45,7 +45,7 @@ def show_sidebar(auth_service, session_manager, ai_service):
                         session_manager.switch_session(sid, auth_service)
                         st.rerun()
                 with col2:
-                    if st.button("🗑️", key=f"del_{sid}", help="Delete session"):
+                    if st.button("✖", key=f"del_{sid}", help="Delete session"):
                         session_manager.delete_session(sid, auth_service)
                         st.rerun()
 

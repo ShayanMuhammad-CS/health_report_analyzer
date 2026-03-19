@@ -145,6 +145,43 @@ st.markdown(
         background: linear-gradient(135deg, #1D4ED8, #4338CA) !important;
     }
 
+    /* Glass Forms (Cards) */
+    [data-testid="stForm"] {
+        background: rgba(30, 41, 59, 0.4) !important;
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 16px !important;
+        padding: 2rem !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    /* Mobile Scaling Constraint */
+    @media (max-width: 768px) {
+        .block-container {
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+            padding-top: 2rem !important;
+        }
+        [data-testid="stForm"] {
+            padding: 1.2rem !important;
+        }
+    }
+
+    /* Skeleton Loader Animation */
+    .skeleton-loader {
+        background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 75%);
+        background-size: 200% 100%;
+        animation: loading 1.5s infinite;
+        border-radius: 8px;
+        height: 20px;
+        margin-bottom: 10px;
+    }
+    @keyframes loading {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+    }
+
     /* Glass Inputs */
     .stTextInput>div>div>input, .stTextArea>div>div>textarea {
         background: rgba(255, 255, 255, 0.05) !important;

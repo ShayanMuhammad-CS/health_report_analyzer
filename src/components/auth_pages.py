@@ -7,9 +7,12 @@ def show_auth_page(auth_service):
     st.markdown(
         """
         <div style='text-align:center; padding: 2rem 0 1rem;'>
-            <h1 style='font-size:3rem; margin-bottom:0;'>🩺 DOCUS AI</h1>
-            <p style='color:#64B5F6; font-size:1.2rem; margin-top:0;'>
-                DOCUS AI — Analyze your blood report with AI
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 5px;">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+            <h1 style='font-size:3.5rem; margin-bottom:0; letter-spacing:-1.5px; line-height:1.2;'>DOCUS AI</h1>
+            <p style='color:#818CF8; font-size:1.1rem; margin-top:0; font-weight:300;'>
+                Intelligent Blood Report Analysis
             </p>
         </div>
         """,

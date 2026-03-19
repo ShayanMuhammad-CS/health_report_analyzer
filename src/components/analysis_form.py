@@ -11,66 +11,71 @@ def show_analysis_form(ai_service, auth_service, session_id: str):
     - "Analyze Report" button
     Returns (report_text, analysis_result) or (None, None) if not yet submitted.
     """
-    st.markdown("### 📄 Blood Report Analysis")
+    st.markdown("### <span style='color:#818CF8;'>📄</span> Blood Report Analysis", unsafe_allow_html=True)
 
-    # ── Report Source ────────────────────────────────────────────────────────
-    source = st.radio(
-        "Report Source",
-        options=["📤 Upload PDF", "📋 Use Sample Report"],
-        horizontal=True,
-        label_visibility="collapsed",
-    )
-
+    tab_doc, tab_patient = st.tabs(["1️⃣ Document Upload", "2️⃣ Patient Context & Analysis"])
+    
     report_text = None
 
-    if source == "📤 Upload PDF":
-        uploaded_file = st.file_uploader(
-            "Upload your blood report PDF (max 20MB, 50 pages)",
-            type=["pdf", "PDF"],
-            help="Only PDF files containing blood test results are accepted.",
+    # ── Step 1: Report Source ────────────────────────────────────────────────
+    with tab_doc:
+        st.markdown("<br/>", unsafe_allow_html=True)
+        source = st.radio(
+            "Report Source",
+            options=["Upload PDF", "Use Sample Report"],
+            horizontal=True,
+            label_visibility="collapsed",
         )
-        if uploaded_file:
-            if uploaded_file.size > 20 * 1024 * 1024:
-                st.error("File size exceeds 20MB limit.")
-            else:
-                with st.spinner("Extracting text from PDF..."):
-                    extracted = extract_text_from_pdf(uploaded_file)
-                # If extraction returned an error string (starts with common error patterns)
-                if len(extracted) < 50 or extracted.startswith("Error") or extracted.startswith("Could") or extracted.startswith("PDF") or extracted.startswith("This") or extracted.startswith("Uploaded"):
-                    st.error(extracted)
+
+        if source == "Upload PDF":
+            uploaded_file = st.file_uploader(
+                "Upload your blood report PDF (max 20MB, 50 pages)",
+                type=["pdf", "PDF"],
+                help="Only PDF files containing blood test results are accepted.",
+            )
+            if uploaded_file:
+                if uploaded_file.size > 20 * 1024 * 1024:
+                    st.error("File size exceeds 20MB limit.")
                 else:
-                    report_text = extracted
-                    st.success(f"✅ PDF extracted successfully ({len(report_text):,} characters)")
-    else:
-        report_text = SAMPLE_BLOOD_REPORT
-        with st.expander("👁️ Preview Sample Report"):
-            st.text(report_text)
+                    with st.spinner("Extracting text from PDF..."):
+                        extracted = extract_text_from_pdf(uploaded_file)
+                    if len(extracted) < 50 or extracted.startswith("Error") or extracted.startswith("Could") or extracted.startswith("PDF") or extracted.startswith("This") or extracted.startswith("Uploaded"):
+                        st.error(extracted)
+                    else:
+                        report_text = extracted
+                        st.success(f"✅ PDF extracted successfully ({len(report_text):,} characters). Please proceed to Step 2.")
+        else:
+            report_text = SAMPLE_BLOOD_REPORT
+            st.info("Sample report loaded. You can view it below or proceed directly to Step 2.")
+            with st.expander("👁️ Preview Sample Report"):
+                st.text(report_text)
 
-    # ── Patient Details ──────────────────────────────────────────────────────
-    st.markdown("#### 👤 Patient Information")
-    col1, col2 = st.columns(2)
-    with col1:
-        age = st.number_input("Age", min_value=1, max_value=120, value=30, step=1)
-    with col2:
-        gender = st.selectbox("Gender", ["Male", "Female", "Other", "Prefer not to say"])
-    medical_history = st.text_area(
-        "Relevant Medical History (optional)",
-        placeholder="e.g. Diabetes Type 2, Hypertension, recent surgery...",
-        height=80,
-    )
+    # ── Step 2: Patient Details ──────────────────────────────────────────────
+    with tab_patient:
+        st.markdown("<br/>", unsafe_allow_html=True)
+        col1, col2 = st.columns(2)
+        with col1:
+            age = st.number_input("Age", min_value=1, max_value=120, value=30, step=1)
+        with col2:
+            gender = st.selectbox("Gender", ["Male", "Female", "Other", "Prefer not to say"])
+        medical_history = st.text_area(
+            "Relevant Medical History (optional)",
+            placeholder="e.g. Diabetes Type 2, Hypertension, recent surgery...",
+            height=80,
+        )
 
-    # ── Analyze Button ───────────────────────────────────────────────────────
-    remaining = ai_service.get_remaining_analyses()
-    if remaining <= 0:
-        st.warning("⚠️ You have reached today's analysis limit. Please try again tomorrow.")
-        return None, None
+        st.markdown("<br/>", unsafe_allow_html=True)
+        remaining = ai_service.get_remaining_analyses()
+        if remaining <= 0:
+            st.warning("⚠️ You have reached today's analysis limit. Please try again tomorrow.")
+            return None, None
 
-    analyze_clicked = st.button(
-        f"🔬 Analyze Report ({remaining} left today)",
-        type="primary",
-        use_container_width=True,
-        disabled=report_text is None,
-    )
+        analyze_clicked = st.button(
+            f"⚡ Analyze Report ({remaining} left today)",
+            type="primary",
+            use_container_width=True,
+            disabled=report_text is None,
+        )
 
     if analyze_clicked:
         if not report_text:
