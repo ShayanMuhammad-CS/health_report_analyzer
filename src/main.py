@@ -27,44 +27,128 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    /* Dark background */
-    .stApp { background-color: #0e1117; }
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
 
-    /* Chat bubbles */
-    [data-testid="stChatMessage"] {
-        border-radius: 12px;
-        padding: 0.5rem 1rem;
-        margin-bottom: 0.4rem;
+    /* Global Typography */
+    html, body, [class*="st-"] {
+        font-family: 'Outfit', sans-serif !important;
     }
 
-    /* Primary button style */
-    .stButton > button[kind="primary"] {
-        background: linear-gradient(135deg, #1976D2, #64B5F6);
-        border: none;
-        color: white;
-        font-weight: 600;
-        border-radius: 8px;
-    }
-    .stButton > button[kind="primary"]:hover {
-        background: linear-gradient(135deg, #1565C0, #42A5F5);
-        transform: translateY(-1px);
+    /* Gorgeous Animated Dark Gradient Background */
+    .stApp { 
+        background: linear-gradient(135deg, #090c10, #161b22, #0d1117, #06090c);
+        background-size: 300% 300%;
+        animation: gradientBG 15s ease infinite;
+        color: #e6edf3;
     }
 
-    /* Sidebar styling */
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    /* Glassmorphism Sidebar */
     [data-testid="stSidebar"] {
-        background-color: #161b22;
+        background: rgba(22, 27, 34, 0.45) !important;
+        backdrop-filter: blur(16px) !important;
+        -webkit-backdrop-filter: blur(16px);
+        border-right: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    /* Top Header Bar Removal/Hiding */
+    header[data-testid="stHeader"] {
+        background: transparent !important;
     }
 
-    /* Expander */
-    .streamlit-expanderHeader { font-weight: 600; color: #64B5F6; }
+    /* Premium Chat Bubbles */
+    [data-testid="stChatMessage"] {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        margin-bottom: 0.8rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    [data-testid="stChatMessage"]:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 32px rgba(89, 165, 255, 0.15);
+    }
 
-    /* Analysis result box */
+    /* Glow Primary Buttons */
+    .stButton > button[kind="primary"] {
+        background: linear-gradient(135deg, #2563EB, #4F46E5) !important;
+        border: none !important;
+        color: white !important;
+        font-weight: 800 !important;
+        border-radius: 12px !important;
+        padding: 0.6rem 2rem !important;
+        box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3) !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .stButton > button[kind="primary"]:hover {
+        transform: translateY(-2px) scale(1.02) !important;
+        box-shadow: 0 8px 25px rgba(79, 70, 229, 0.5) !important;
+        background: linear-gradient(135deg, #1D4ED8, #4338CA) !important;
+    }
+
+    /* Glass Inputs */
+    .stTextInput>div>div>input, .stTextArea>div>div>textarea {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        color: white !important;
+        border-radius: 10px !important;
+        transition: all 0.3s !important;
+    }
+    
+    .stTextInput>div>div>input:focus, .stTextArea>div>div>textarea:focus {
+        border-color: #6366F1 !important;
+        box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3) !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+    }
+
+    /* Expander Accents */
+    .streamlit-expanderHeader { 
+        font-weight: 600 !important; 
+        color: #818CF8 !important; 
+        border-radius: 8px !important;
+        background: rgba(255,255,255, 0.02) !important;
+    }
+    
+    [data-testid="stExpander"] {
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 10px !important;
+        overflow: hidden;
+    }
+
+    /* Analysis Result Box */
     .analysis-box {
-        background: #1a2233;
-        border-left: 4px solid #64B5F6;
-        border-radius: 6px;
-        padding: 1rem 1.2rem;
-        margin-top: 0.5rem;
+        background: rgba(30, 41, 59, 0.6);
+        backdrop-filter: blur(10px);
+        border-left: 4px solid #6366F1;
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin-top: 1rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Custom Scrollbar for modern feel */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.2);
     }
     </style>
     """,
