@@ -14,7 +14,8 @@ class AuthService:
     def __init__(self):
         try:
             self.supabase = create_client(
-                st.secrets["SUPABASE_URL"], st.secrets["SUPABASE_KEY"]
+                "https://fotqiunrzclfzoypbogs.supabase.co",
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZvdHFpdW5yemNsZnpveXBib2dzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM5MDEzNTgsImV4cCI6MjA4OTQ3NzM1OH0.hvNXAISQmbmyRdo_Fpi_a58URC3JQMeb13ibFZWcnN4"
             )
         except Exception as e:
             st.error(f"Failed to initialize Supabase: {str(e)}")
