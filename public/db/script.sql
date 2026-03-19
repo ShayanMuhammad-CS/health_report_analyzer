@@ -33,3 +33,22 @@ CREATE INDEX idx_chat_messages_session_id ON chat_messages(session_id);
 
 -- Add unique constraint to prevent duplicate emails
 ALTER TABLE users ADD CONSTRAINT unique_email UNIQUE (email);
+
+-- === 🚨 PERMISSIONS & RLS FOR SUPABASE ===
+-- Run these to fix the "42501 permission denied" errors during sign-up and usage
+
+-- 1. Grant base Postgres permissions to the API roles
+GRANT ALL ON TABLE public.users TO anon, authenticated;
+GRANT ALL ON TABLE public.chat_sessions TO anon, authenticated;
+GRANT ALL ON TABLE public.chat_messages TO anon, authenticated;
+
+-- 2. Turn on Row Level Security
+ALTER TABLE public.users ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.chat_sessions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.chat_messages ENABLE ROW LEVEL SECURITY;
+
+-- 3. Create base policies (Allows all operations for development)
+-- Note: Before launching publicly, restrict these using auth.uid() = id
+CREATE POLICY "Allow public access to users" ON public.users FOR ALL USING (true);
+CREATE POLICY "Allow public access to chat_sessions" ON public.chat_sessions FOR ALL USING (true);
+CREATE POLICY "Allow public access to chat_messages" ON public.chat_messages FOR ALL USING (true);

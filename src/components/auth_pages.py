@@ -38,6 +38,22 @@ def show_auth_page(auth_service):
                 else:
                     st.error(result)
 
+        st.markdown("<br/>", unsafe_allow_html=True)
+        if st.button("🚀 Developer Login (Bypass Supabase Limits)", use_container_width=True):
+            dev_user = {
+                "id": "12345678-1234-1234-1234-123456789abc",
+                "email": "dev@local.host",
+                "name": "Local Developer",
+                "created_at": "2026-03-19T12:00:00"
+            }
+            try:
+                # Ensure dev user exists in db so chat sessions don't break foreign key constraints
+                auth_service.supabase.table("users").upsert(dev_user).execute()
+            except Exception:
+                pass
+            st.session_state.user = dev_user
+            st.rerun()
+
     # ── Sign Up ──────────────────────────────────────────────────────────────
     with tab_signup:
         st.subheader("Create your account")

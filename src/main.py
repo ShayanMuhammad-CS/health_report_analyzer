@@ -72,6 +72,12 @@ st.markdown(
 )
 
 
+@st.cache_resource(show_spinner="Loading AI Models... This may take a moment.")
+def get_ai_service():
+    """Cached initialization of the AI Service to prevent reloading on reruns."""
+    return AIService()
+
+
 def main():
     """Main application entry point."""
     # ── Initialize core services ─────────────────────────────────────────────
@@ -83,10 +89,6 @@ def main():
     except Exception as e:
         st.error(f"❌ Failed to connect to the database: {str(e)}")
         st.stop()
-
-    @st.cache_resource(show_spinner="Loading AI Models... This may take a moment.")
-    def get_ai_service():
-        return AIService()
 
     ai_service = get_ai_service()
 

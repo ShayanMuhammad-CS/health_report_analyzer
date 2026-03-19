@@ -114,12 +114,18 @@ class AuthService:
 
             user_data = self.get_user_data(auth_response.user.id)
             if not user_data:
-                # Fallback: build from auth data
+                # Fallback: build from auth data and auto-register DB row
                 user_data = {
                     "id": auth_response.user.id,
                     "email": email,
                     "name": auth_response.user.user_metadata.get("name", email.split("@")[0]),
+                    "created_at": datetime.now().isoformat(),
                 }
+                # Fix orphaned accounts from previous permission errors
+                try:
+                    self.supabase.table("users").insert(user_data).execute()
+                except Exception:
+                    pass
 
             st.session_state.auth_token = auth_response.session.access_token
             st.session_state.refresh_token = auth_response.session.refresh_token
