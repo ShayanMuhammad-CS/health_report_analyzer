@@ -35,11 +35,11 @@ st.markdown(
     }
 
     /* Gorgeous Animated Dark Gradient Background */
-    .stApp { 
-        background: linear-gradient(135deg, #090c10, #161b22, #0d1117, #06090c);
+    .stApp, [data-testid="stAppViewContainer"] { 
+        background: linear-gradient(135deg, #0f172a, #1e1b4b, #1e293b, #0f172a);
         background-size: 300% 300%;
         animation: gradientBG 15s ease infinite;
-        color: #e6edf3;
+        color: #f8fafc;
     }
 
     @keyframes gradientBG {
@@ -56,25 +56,75 @@ st.markdown(
         border-right: 1px solid rgba(255, 255, 255, 0.05);
     }
     
-    /* Top Header Bar Removal/Hiding */
-    header[data-testid="stHeader"] {
-        background: transparent !important;
-    }
+    /* Deep Hide Streamlit Branding & Menus */
+    #MainMenu {visibility: hidden !important;}
+    header {visibility: hidden !important;}
+    [data-testid="stHeader"] {display: none !important;}
+    [data-testid="stToolbar"] {display: none !important;}
 
-    /* Premium Chat Bubbles */
+    /* Premium Chat Bubbles - Base Override */
     [data-testid="stChatMessage"] {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: 16px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        padding: 1rem;
-        margin-bottom: 0.8rem;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin-bottom: 1.5rem !important;
     }
     
-    [data-testid="stChatMessage"]:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 32px rgba(89, 165, 255, 0.15);
+    /* Hide Avatar Icons for minimal SaaS look */
+    [data-testid="chatAvatarIcon-user"], 
+    [data-testid="chatAvatarIcon-assistant"] {
+        display: none !important;
+    }
+
+    /* User Messages (Aligned Right, Blue Glass Accent) */
+    [data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-user"]) {
+        flex-direction: row-reverse !important;
+    }
+    [data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-user"]) .stMarkdown {
+        background: linear-gradient(135deg, #4F46E5, #2563EB) !important;
+        color: white !important;
+        border-radius: 20px 20px 4px 20px !important;
+        padding: 12px 18px !important;
+        display: inline-block !important;
+        margin-left: auto !important;
+        box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3) !important;
+    }
+    /* Stop the internal markdown container from taking 100% width so it bubbles */
+    [data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-user"]) [data-testid="stMarkdownContainer"] {
+        width: max-content !important;
+        max-width: 85% !important;
+        margin-left: auto !important;
+    }
+
+    /* Assistant Messages (Aligned Left, Dark Glass) */
+    [data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-assistant"]) .stMarkdown {
+        background: rgba(30, 41, 59, 0.7) !important;
+        backdrop-filter: blur(10px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        color: #f8fafc !important;
+        border-radius: 20px 20px 20px 4px !important;
+        padding: 12px 18px !important;
+        display: inline-block !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+    }
+    [data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-assistant"]) [data-testid="stMarkdownContainer"] {
+        width: max-content !important;
+        max-width: 90% !important;
+    }
+
+    /* Floating Chat Input Pill */
+    [data-testid="stChatInput"] {
+        padding-bottom: 2rem !important;
+    }
+    [data-testid="stChatInput"] textarea {
+        background: rgba(15, 23, 42, 0.85) !important;
+        backdrop-filter: blur(16px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        border-radius: 30px !important;
+        padding: 15px 50px 15px 25px !important;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4) !important;
+        color: white !important;
     }
 
     /* Glow Primary Buttons */
