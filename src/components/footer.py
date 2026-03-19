@@ -7,7 +7,7 @@ def show_footer():
     st.markdown(
         """
         <div style='text-align:center; color:#888; font-size:0.8rem; padding: 0.5rem;'>
-            🩺 <strong>HIA — Health Insights Agent</strong> &nbsp;|&nbsp;
+            🩺 <strong>DOCUS AI</strong> &nbsp;|&nbsp;
             This tool is for informational purposes only and is <em>not</em> a substitute
             for professional medical advice, diagnosis, or treatment.
             Always consult a qualified healthcare provider.

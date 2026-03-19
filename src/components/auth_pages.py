@@ -7,9 +7,9 @@ def show_auth_page(auth_service):
     st.markdown(
         """
         <div style='text-align:center; padding: 2rem 0 1rem;'>
-            <h1 style='font-size:3rem; margin-bottom:0;'>🩺 HIA</h1>
+            <h1 style='font-size:3rem; margin-bottom:0;'>🩺 DOCUS AI</h1>
             <p style='color:#64B5F6; font-size:1.2rem; margin-top:0;'>
-                Health Insights Agent — Analyze your blood report with AI
+                DOCUS AI — Analyze your blood report with AI
             </p>
         </div>
         """,

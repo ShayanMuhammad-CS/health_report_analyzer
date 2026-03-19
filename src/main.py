@@ -115,7 +115,7 @@ def main():
         st.markdown(
             """
             <div style='text-align:center; padding: 4rem 1rem;'>
-                <h2 style='color:#64B5F6;'>👋 Welcome to HIA!</h2>
+                <h2 style='color:#64B5F6;'>👋 Welcome to DOCUS AI!</h2>
                 <p style='color:#aaa; font-size:1.1rem;'>
                     Start by creating a <strong>New Session</strong> from the sidebar,
                     then upload your blood report PDF or use the sample report.
