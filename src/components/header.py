@@ -8,12 +8,12 @@ def show_header(user_name: str = None):
     st.markdown(
         f"""
         <div style='display:flex; align-items:center; justify-content:space-between;
-                    padding-bottom: 0.5rem; border-bottom: 1px solid #333;'>
+                    padding-bottom: 0.5rem; border-bottom: 1px solid #e2e8f0;'>
             <div>
-                <h2 style='margin:0; color:#64B5F6;'>{APP_ICON} {APP_NAME}</h2>
-                <p style='margin:0; color:#aaa; font-size:0.9rem;'>{APP_DESCRIPTION}</p>
+                <h2 style='margin:0; color:#2563EB;'>{APP_ICON} {APP_NAME}</h2>
+                <p style='margin:0; color:#475569; font-size:0.9rem;'>{APP_DESCRIPTION}</p>
             </div>
-            <div style='text-align:right; color:#ccc; font-size:0.95rem;'>
+            <div style='text-align:right; color:#64748b; font-size:0.95rem;'>
                 {greeting}
             </div>
         </div>

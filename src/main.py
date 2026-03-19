@@ -38,26 +38,18 @@ st.markdown(
         font-family: 'Material Symbols Rounded', 'Material Symbols Outlined', sans-serif !important;
     }
 
-    /* Gorgeous Colorful Aurora Gradient Background */
+    /* Gorgeous Static Light Background */
     .stApp, [data-testid="stAppViewContainer"] { 
-        background: linear-gradient(-45deg, #0B1021, #311557, #81225B, #311557, #0B1021);
-        background-size: 300% 300%;
-        animation: gradientBG 15s ease infinite;
-        color: #f8fafc;
-    }
-
-    @keyframes gradientBG {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
+        background: linear-gradient(135deg, #f8fafc, #e2e8f0, #cbd5e1);
+        color: #1e293b;
     }
 
     /* Glassmorphism Sidebar */
     [data-testid="stSidebar"] {
-        background: rgba(22, 27, 34, 0.45) !important;
+        background: rgba(255, 255, 255, 0.6) !important;
         backdrop-filter: blur(16px) !important;
         -webkit-backdrop-filter: blur(16px);
-        border-right: 1px solid rgba(255, 255, 255, 0.05);
+        border-right: 1px solid rgba(0, 0, 0, 0.05);
     }
     
     /* Deep Hide Streamlit Branding & Menus */
@@ -92,7 +84,7 @@ st.markdown(
         padding: 12px 18px !important;
         display: inline-block !important;
         margin-left: auto !important;
-        box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3) !important;
+        box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2) !important;
     }
     /* Stop the internal markdown container from taking 100% width so it bubbles */
     [data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-user"]) [data-testid="stMarkdownContainer"] {
@@ -101,16 +93,16 @@ st.markdown(
         margin-left: auto !important;
     }
 
-    /* Assistant Messages (Aligned Left, Dark Glass) */
+    /* Assistant Messages (Aligned Left, Light Glass) */
     [data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-assistant"]) .stMarkdown {
-        background: rgba(30, 41, 59, 0.7) !important;
+        background: rgba(255, 255, 255, 0.8) !important;
         backdrop-filter: blur(10px) !important;
-        border: 1px solid rgba(255, 255, 255, 0.08) !important;
-        color: #f8fafc !important;
+        border: 1px solid rgba(0, 0, 0, 0.05) !important;
+        color: #1e293b !important;
         border-radius: 20px 20px 20px 4px !important;
         padding: 12px 18px !important;
         display: inline-block !important;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
     }
     [data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-assistant"]) [data-testid="stMarkdownContainer"] {
         width: max-content !important;
@@ -122,13 +114,13 @@ st.markdown(
         padding-bottom: 2rem !important;
     }
     [data-testid="stChatInput"] textarea {
-        background: rgba(15, 23, 42, 0.85) !important;
+        background: rgba(255, 255, 255, 0.9) !important;
         backdrop-filter: blur(16px) !important;
-        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        border: 1px solid rgba(0, 0, 0, 0.1) !important;
         border-radius: 30px !important;
         padding: 15px 50px 15px 25px !important;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4) !important;
-        color: white !important;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1) !important;
+        color: #1e293b !important;
     }
 
     /* Vibrant Glow Primary Buttons */
@@ -139,25 +131,25 @@ st.markdown(
         font-weight: 800 !important;
         border-radius: 12px !important;
         padding: 0.6rem 2rem !important;
-        box-shadow: 0 4px 15px rgba(225, 29, 72, 0.4) !important;
+        box-shadow: 0 4px 15px rgba(225, 29, 72, 0.3) !important;
         transition: all 0.3s ease !important;
     }
     
     .stButton > button[kind="primary"]:hover {
         transform: translateY(-2px) scale(1.02) !important;
-        box-shadow: 0 8px 25px rgba(147, 51, 234, 0.6) !important;
+        box-shadow: 0 8px 25px rgba(147, 51, 234, 0.4) !important;
         background: linear-gradient(135deg, #BE123C, #7E22CE) !important;
     }
 
     /* Glass Forms (Cards) */
     [data-testid="stForm"] {
-        background: rgba(30, 41, 59, 0.4) !important;
+        background: rgba(255, 255, 255, 0.6) !important;
         backdrop-filter: blur(12px) !important;
         -webkit-backdrop-filter: blur(12px) !important;
-        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border: 1px solid rgba(0, 0, 0, 0.05) !important;
         border-radius: 16px !important;
         padding: 2rem !important;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
     }
 
     /* Mobile Scaling Constraint */
@@ -174,7 +166,7 @@ st.markdown(
 
     /* Skeleton Loader Animation */
     .skeleton-loader {
-        background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 75%);
+        background: linear-gradient(90deg, rgba(0,0,0,0.03) 25%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.03) 75%);
         background-size: 200% 100%;
         animation: loading 1.5s infinite;
         border-radius: 8px;
@@ -188,42 +180,43 @@ st.markdown(
 
     /* Glass Inputs */
     .stTextInput>div>div>input, .stTextArea>div>div>textarea {
-        background: rgba(255, 255, 255, 0.05) !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        color: white !important;
+        background: rgba(255, 255, 255, 0.8) !important;
+        border: 1px solid rgba(0, 0, 0, 0.1) !important;
+        color: #1e293b !important;
         border-radius: 10px !important;
         transition: all 0.3s !important;
     }
     
     .stTextInput>div>div>input:focus, .stTextArea>div>div>textarea:focus {
         border-color: #6366F1 !important;
-        box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3) !important;
-        background: rgba(255, 255, 255, 0.08) !important;
+        box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2) !important;
+        background: white !important;
     }
 
     /* Expander Accents */
     .streamlit-expanderHeader { 
         font-weight: 600 !important; 
-        color: #818CF8 !important; 
+        color: #4F46E5 !important; 
         border-radius: 8px !important;
-        background: rgba(255,255,255, 0.02) !important;
+        background: rgba(0,0,0, 0.02) !important;
     }
     
     [data-testid="stExpander"] {
-        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border: 1px solid rgba(0, 0, 0, 0.05) !important;
         border-radius: 10px !important;
         overflow: hidden;
+        background: rgba(255, 255, 255, 0.5) !important;
     }
 
     /* Analysis Result Box */
     .analysis-box {
-        background: rgba(30, 41, 59, 0.6);
+        background: rgba(255, 255, 255, 0.7);
         backdrop-filter: blur(10px);
         border-left: 4px solid #6366F1;
         border-radius: 10px;
         padding: 1.5rem;
         margin-top: 1rem;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     }
     
     /* Custom Scrollbar for modern feel */
@@ -235,11 +228,11 @@ st.markdown(
         background: transparent;
     }
     ::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(0, 0, 0, 0.15);
         border-radius: 10px;
     }
     ::-webkit-scrollbar-thumb:hover {
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(0, 0, 0, 0.25);
     }
     </style>
     """,
@@ -290,8 +283,8 @@ def main():
         st.markdown(
             """
             <div style='text-align:center; padding: 4rem 1rem;'>
-                <h2 style='color:#64B5F6;'>Welcome to DOCUS AI!</h2>
-                <p style='color:#aaa; font-size:1.1rem;'>
+                <h2 style='color:#2563EB;'>Welcome to DOCUS AI!</h2>
+                <p style='color:#475569; font-size:1.1rem;'>
                     Start by creating a <strong>New Session</strong> from the sidebar,
                     then upload your blood report PDF or use the sample report.
                 </p>
