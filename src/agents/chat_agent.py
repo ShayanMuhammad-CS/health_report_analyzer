@@ -73,7 +73,7 @@ class ChatAgent:
                     },
                     {"role": "user", "content": contextualize_prompt},
                 ],
-                temperature=0.1,
+                temperature=0.0,
                 max_tokens=200,
             )
             return response.choices[0].message.content.strip()
