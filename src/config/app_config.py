@@ -1,6 +1,6 @@
 APP_NAME = "DOCUS AI"
 APP_DESCRIPTION = "Your AI Health Assistant"
-APP_ICON = "🩺"
+APP_ICON = "●"
 APP_TAGLINE = "Discover a Healthier You with AI"
 
 # App settings

@@ -11,9 +11,9 @@ def show_analysis_form(ai_service, auth_service, session_id: str):
     - "Analyze Report" button
     Returns (report_text, analysis_result) or (None, None) if not yet submitted.
     """
-    st.markdown("### <span style='color:#818CF8;'>📄</span> Blood Report Analysis", unsafe_allow_html=True)
+    st.markdown("### <span style='color:#818CF8;'>●</span> Blood Report Analysis", unsafe_allow_html=True)
 
-    tab_doc, tab_patient = st.tabs(["1️⃣ Document Upload", "2️⃣ Patient Context & Analysis"])
+    tab_doc, tab_patient = st.tabs(["Document Upload", "Patient Context & Analysis"])
     
     report_text = None
 
@@ -43,11 +43,11 @@ def show_analysis_form(ai_service, auth_service, session_id: str):
                         st.error(extracted)
                     else:
                         report_text = extracted
-                        st.success(f"✅ PDF extracted successfully ({len(report_text):,} characters). Please proceed to Step 2.")
+                        st.success(f"PDF extracted successfully ({len(report_text):,} characters). Please proceed to Step 2.")
         else:
             report_text = SAMPLE_BLOOD_REPORT
             st.info("Sample report loaded. You can view it below or proceed directly to Step 2.")
-            with st.expander("👁️ Preview Sample Report"):
+            with st.expander("Preview Sample Report"):
                 st.text(report_text)
 
     # ── Step 2: Patient Details ──────────────────────────────────────────────
@@ -67,11 +67,11 @@ def show_analysis_form(ai_service, auth_service, session_id: str):
         st.markdown("<br/>", unsafe_allow_html=True)
         remaining = ai_service.get_remaining_analyses()
         if remaining <= 0:
-            st.warning("⚠️ You have reached today's analysis limit. Please try again tomorrow.")
+            st.warning("You have reached today's analysis limit. Please try again tomorrow.")
             return None, None
 
         analyze_clicked = st.button(
-            f"⚡ Analyze Report ({remaining} left today)",
+            f"Analyze Report ({remaining} left today)",
             type="primary",
             use_container_width=True,
             disabled=report_text is None,

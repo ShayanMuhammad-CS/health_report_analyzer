@@ -20,11 +20,11 @@ def show_sidebar(auth_service, session_manager, ai_service):
         st.divider()
 
         # ── New Session Button ───────────────────────────────────────────────
-        if st.button("✨ New Session", use_container_width=True, type="primary"):
+        if st.button("New Session", use_container_width=True, type="primary"):
             session_manager.create_new_session(auth_service)
             st.rerun()
 
-        st.markdown("#### 📋 Your Sessions")
+        st.markdown("<br/><h4>Your Sessions</h4>", unsafe_allow_html=True)
 
         # ── Session List ─────────────────────────────────────────────────────
         sessions = auth_service.get_chat_sessions(user.get("id", "")) if user else []
@@ -54,13 +54,13 @@ def show_sidebar(auth_service, session_manager, ai_service):
         # ── Daily Analysis Countdown ─────────────────────────────────────────
         remaining = ai_service.get_remaining_analyses()
         total = st.session_state.get("analysis_limit", 15)
-        st.markdown(f"#### 📊 Daily Analyses")
+        st.markdown(f"#### Daily Analyses")
         st.progress(remaining / total)
         st.caption(f"{remaining} / {total} remaining today")
 
         st.divider()
 
         # ── Logout ───────────────────────────────────────────────────────────
-        if st.button("🚪 Sign Out", use_container_width=True):
+        if st.button("Sign Out", use_container_width=True):
             auth_service.sign_out()
             st.rerun()

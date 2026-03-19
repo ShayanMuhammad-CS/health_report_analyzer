@@ -4,7 +4,7 @@ from config.app_config import APP_NAME, APP_ICON, APP_DESCRIPTION
 
 def show_header(user_name: str = None):
     """Render the app header with user greeting."""
-    greeting = f"Hello, {user_name}! 👋" if user_name else ""
+    greeting = f"Hello, {user_name}!" if user_name else ""
     st.markdown(
         f"""
         <div style='display:flex; align-items:center; justify-content:space-between;

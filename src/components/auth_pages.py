@@ -19,7 +19,7 @@ def show_auth_page(auth_service):
         unsafe_allow_html=True,
     )
 
-    tab_login, tab_signup = st.tabs(["🔑 Sign In", "📝 Sign Up"])
+    tab_login, tab_signup = st.tabs(["Sign In", "Sign Up"])
 
     # ── Sign In ──────────────────────────────────────────────────────────────
     with tab_login:
@@ -36,13 +36,13 @@ def show_auth_page(auth_service):
                 with st.spinner("Signing in..."):
                     success, result = auth_service.sign_in(email, password)
                 if success:
-                    st.success(f"Welcome back, {result.get('name', email.split('@')[0])}! 👋")
+                    st.success(f"Welcome back, {result.get('name', email.split('@')[0])}!")
                     st.rerun()
                 else:
                     st.error(result)
 
         st.markdown("<br/>", unsafe_allow_html=True)
-        if st.button("🚀 Developer Login (Bypass Supabase Limits)", use_container_width=True):
+        if st.button("Developer Login (Bypass Supabase Limits)", use_container_width=True):
             dev_user = {
                 "id": "12345678-1234-1234-1234-123456789abc",
                 "email": "dev@local.host",
@@ -87,7 +87,7 @@ def show_auth_page(auth_service):
                 with st.spinner("Creating account..."):
                     success, result = auth_service.sign_up(email_su, password_su, name)
                 if success:
-                    st.success("Account created! You are now signed in. 🎉")
+                    st.success("Account created! You are now signed in.")
                     st.rerun()
                 else:
                     st.error(result)

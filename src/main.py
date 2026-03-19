@@ -262,7 +262,7 @@ def main():
     try:
         auth_service = AuthService()
     except Exception as e:
-        st.error(f"❌ Failed to connect to the database: {str(e)}")
+        st.error(f"Failed to connect to the database: {str(e)}")
         st.stop()
 
     ai_service = get_ai_service()
@@ -290,7 +290,7 @@ def main():
         st.markdown(
             """
             <div style='text-align:center; padding: 4rem 1rem;'>
-                <h2 style='color:#64B5F6;'>👋 Welcome to DOCUS AI!</h2>
+                <h2 style='color:#64B5F6;'>Welcome to DOCUS AI!</h2>
                 <p style='color:#aaa; font-size:1.1rem;'>
                     Start by creating a <strong>New Session</strong> from the sidebar,
                     then upload your blood report PDF or use the sample report.
@@ -308,7 +308,7 @@ def main():
     existing_analysis = st.session_state.get("analysis_result")
 
     if existing_analysis:
-        with st.expander("📊 View Report Analysis", expanded=True):
+        with st.expander("View Report Analysis", expanded=True):
             st.markdown(existing_analysis)
     else:
         # Show the analysis form only if no analysis yet
@@ -324,13 +324,13 @@ def main():
             )
             auth_service.save_message(current_session_id, "assistant", analysis_message)
 
-            with st.expander("📊 Analysis Result", expanded=True):
+            with st.expander("Analysis Result", expanded=True):
                 st.markdown(new_analysis)
 
     # ── Chat Interface ───────────────────────────────────────────────────────
     if existing_analysis or st.session_state.get("analysis_result"):
         st.markdown("---")
-        st.markdown("### 💬 Follow-up Chat")
+        st.markdown("### Follow-up Chat")
         st.caption(
             "Ask follow-up questions about your blood report. "
             "The AI will answer using RAG (Retrieval-Augmented Generation) over your report."
