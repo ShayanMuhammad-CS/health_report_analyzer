@@ -11,7 +11,7 @@ def show_auth_page(auth_service):
                 <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
             </svg>
             <h1 style='font-size:3.5rem; margin-bottom:0; letter-spacing:-1.5px; line-height:1.2;'>DOCUS AI</h1>
-            <p style='color:#4F46E5; font-size:1.1rem; margin-top:0; font-weight:300;'>
+            <p style='color:#001344; font-size:1.1rem; margin-top:0; font-weight:300;'>
                 Intelligent Blood Report Analysis
             </p>
         </div>

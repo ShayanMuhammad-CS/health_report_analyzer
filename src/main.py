@@ -38,18 +38,18 @@ st.markdown(
         font-family: 'Material Symbols Rounded', 'Material Symbols Outlined', sans-serif !important;
     }
 
-    /* Gorgeous Static Light Background */
+    /* Oladoc Theme */
     .stApp, [data-testid="stAppViewContainer"] { 
-        background: linear-gradient(135deg, #f8fafc, #e2e8f0, #cbd5e1);
-        color: #1e293b;
+        background: linear-gradient(135deg, #f8f9fa, #ffffff, #f1f3f5);
+        color: #212529;
     }
 
     /* Glassmorphism Sidebar */
     [data-testid="stSidebar"] {
-        background: rgba(255, 255, 255, 0.6) !important;
+        background: rgba(255, 255, 255, 0.95) !important;
         backdrop-filter: blur(16px) !important;
         -webkit-backdrop-filter: blur(16px);
-        border-right: 1px solid rgba(0, 0, 0, 0.05);
+        border-right: 1px solid rgba(0, 19, 68, 0.05);
     }
     
     /* Deep Hide Streamlit Branding & Menus */
@@ -73,18 +73,18 @@ st.markdown(
         display: none !important;
     }
 
-    /* User Messages (Aligned Right, Blue Glass Accent) */
+    /* User Messages (Aligned Right, Oladoc Navy) */
     [data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-user"]) {
         flex-direction: row-reverse !important;
     }
     [data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-user"]) .stMarkdown {
-        background: linear-gradient(135deg, #4F46E5, #2563EB) !important;
+        background: #001344 !important;
         color: white !important;
         border-radius: 20px 20px 4px 20px !important;
         padding: 12px 18px !important;
         display: inline-block !important;
         margin-left: auto !important;
-        box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2) !important;
+        box-shadow: 0 5px 15px rgba(0, 19, 68, 0.2) !important;
     }
     /* Stop the internal markdown container from taking 100% width so it bubbles */
     [data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-user"]) [data-testid="stMarkdownContainer"] {
@@ -95,14 +95,13 @@ st.markdown(
 
     /* Assistant Messages (Aligned Left, Light Glass) */
     [data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-assistant"]) .stMarkdown {
-        background: rgba(255, 255, 255, 0.8) !important;
-        backdrop-filter: blur(10px) !important;
-        border: 1px solid rgba(0, 0, 0, 0.05) !important;
-        color: #1e293b !important;
+        background: #ffffff !important;
+        border: 1px solid rgba(0, 19, 68, 0.1) !important;
+        color: #212529 !important;
         border-radius: 20px 20px 20px 4px !important;
         padding: 12px 18px !important;
         display: inline-block !important;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
     }
     [data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-assistant"]) [data-testid="stMarkdownContainer"] {
         width: max-content !important;
@@ -114,42 +113,40 @@ st.markdown(
         padding-bottom: 2rem !important;
     }
     [data-testid="stChatInput"] textarea {
-        background: rgba(255, 255, 255, 0.9) !important;
+        background: rgba(255, 255, 255, 0.95) !important;
         backdrop-filter: blur(16px) !important;
-        border: 1px solid rgba(0, 0, 0, 0.1) !important;
+        border: 1px solid rgba(0, 19, 68, 0.1) !important;
         border-radius: 30px !important;
         padding: 15px 50px 15px 25px !important;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1) !important;
-        color: #1e293b !important;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08) !important;
+        color: #212529 !important;
     }
 
     /* Vibrant Glow Primary Buttons */
     .stButton > button[kind="primary"] {
-        background: linear-gradient(135deg, #E11D48, #9333EA) !important;
+        background: #ffa014 !important;
         border: none !important;
         color: white !important;
         font-weight: 800 !important;
-        border-radius: 12px !important;
+        border-radius: 8px !important;
         padding: 0.6rem 2rem !important;
-        box-shadow: 0 4px 15px rgba(225, 29, 72, 0.3) !important;
+        box-shadow: 0 4px 15px rgba(255, 160, 20, 0.3) !important;
         transition: all 0.3s ease !important;
     }
     
     .stButton > button[kind="primary"]:hover {
         transform: translateY(-2px) scale(1.02) !important;
-        box-shadow: 0 8px 25px rgba(147, 51, 234, 0.4) !important;
-        background: linear-gradient(135deg, #BE123C, #7E22CE) !important;
+        box-shadow: 0 8px 25px rgba(255, 160, 20, 0.4) !important;
+        background: #e68a00 !important;
     }
 
     /* Glass Forms (Cards) */
     [data-testid="stForm"] {
-        background: rgba(255, 255, 255, 0.6) !important;
-        backdrop-filter: blur(12px) !important;
-        -webkit-backdrop-filter: blur(12px) !important;
-        border: 1px solid rgba(0, 0, 0, 0.05) !important;
-        border-radius: 16px !important;
+        background: #ffffff !important;
+        border: 1px solid rgba(0, 19, 68, 0.08) !important;
+        border-radius: 12px !important;
         padding: 2rem !important;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
     }
 
     /* Mobile Scaling Constraint */
@@ -166,7 +163,7 @@ st.markdown(
 
     /* Skeleton Loader Animation */
     .skeleton-loader {
-        background: linear-gradient(90deg, rgba(0,0,0,0.03) 25%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.03) 75%);
+        background: linear-gradient(90deg, rgba(0,19,68,0.03) 25%, rgba(0,19,68,0.08) 50%, rgba(0,19,68,0.03) 75%);
         background-size: 200% 100%;
         animation: loading 1.5s infinite;
         border-radius: 8px;
@@ -180,43 +177,42 @@ st.markdown(
 
     /* Glass Inputs */
     .stTextInput>div>div>input, .stTextArea>div>div>textarea {
-        background: rgba(255, 255, 255, 0.8) !important;
-        border: 1px solid rgba(0, 0, 0, 0.1) !important;
-        color: #1e293b !important;
-        border-radius: 10px !important;
+        background: #ffffff !important;
+        border: 1px solid rgba(0, 19, 68, 0.15) !important;
+        color: #212529 !important;
+        border-radius: 8px !important;
         transition: all 0.3s !important;
     }
     
     .stTextInput>div>div>input:focus, .stTextArea>div>div>textarea:focus {
-        border-color: #6366F1 !important;
-        box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2) !important;
+        border-color: #ffa014 !important;
+        box-shadow: 0 0 0 2px rgba(255, 160, 20, 0.2) !important;
         background: white !important;
     }
 
     /* Expander Accents */
     .streamlit-expanderHeader { 
         font-weight: 600 !important; 
-        color: #4F46E5 !important; 
+        color: #001344 !important; 
         border-radius: 8px !important;
-        background: rgba(0,0,0, 0.02) !important;
+        background: rgba(0, 19, 68, 0.03) !important;
     }
     
     [data-testid="stExpander"] {
-        border: 1px solid rgba(0, 0, 0, 0.05) !important;
-        border-radius: 10px !important;
+        border: 1px solid rgba(0, 19, 68, 0.08) !important;
+        border-radius: 8px !important;
         overflow: hidden;
-        background: rgba(255, 255, 255, 0.5) !important;
+        background: #ffffff !important;
     }
 
     /* Analysis Result Box */
     .analysis-box {
-        background: rgba(255, 255, 255, 0.7);
-        backdrop-filter: blur(10px);
-        border-left: 4px solid #6366F1;
-        border-radius: 10px;
+        background: #ffffff;
+        border-left: 4px solid #ffa014;
+        border-radius: 8px;
         padding: 1.5rem;
         margin-top: 1rem;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     }
     
     /* Custom Scrollbar for modern feel */
@@ -228,11 +224,11 @@ st.markdown(
         background: transparent;
     }
     ::-webkit-scrollbar-thumb {
-        background: rgba(0, 0, 0, 0.15);
-        border-radius: 10px;
+        background: rgba(0, 19, 68, 0.15);
+        border-radius: 8px;
     }
     ::-webkit-scrollbar-thumb:hover {
-        background: rgba(0, 0, 0, 0.25);
+        background: rgba(0, 19, 68, 0.3);
     }
     </style>
     """,
@@ -283,7 +279,7 @@ def main():
         st.markdown(
             """
             <div style='text-align:center; padding: 4rem 1rem;'>
-                <h2 style='color:#2563EB;'>Welcome to DOCUS AI!</h2>
+                <h2 style='color:#001344;'>Welcome to DOCUS AI!</h2>
                 <p style='color:#475569; font-size:1.1rem;'>
                     Start by creating a <strong>New Session</strong> from the sidebar,
                     then upload your blood report PDF or use the sample report.

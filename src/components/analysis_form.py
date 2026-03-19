@@ -11,7 +11,7 @@ def show_analysis_form(ai_service, auth_service, session_id: str):
     - "Analyze Report" button
     Returns (report_text, analysis_result) or (None, None) if not yet submitted.
     """
-    st.markdown("### <span style='color:#4F46E5;'>●</span> Blood Report Analysis", unsafe_allow_html=True)
+    st.markdown("### <span style='color:#ffa014;'>●</span> Blood Report Analysis", unsafe_allow_html=True)
 
     tab_doc, tab_patient = st.tabs(["Document Upload", "Patient Context & Analysis"])
     

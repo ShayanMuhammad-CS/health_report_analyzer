@@ -10,7 +10,7 @@ def show_header(user_name: str = None):
         <div style='display:flex; align-items:center; justify-content:space-between;
                     padding-bottom: 0.5rem; border-bottom: 1px solid #e2e8f0;'>
             <div>
-                <h2 style='margin:0; color:#2563EB;'>{APP_ICON} {APP_NAME}</h2>
+                <h2 style='margin:0; color:#001344;'>{APP_ICON} {APP_NAME}</h2>
                 <p style='margin:0; color:#475569; font-size:0.9rem;'>{APP_DESCRIPTION}</p>
             </div>
             <div style='text-align:right; color:#64748b; font-size:0.95rem;'>
