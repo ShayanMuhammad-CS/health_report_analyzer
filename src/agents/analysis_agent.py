@@ -49,6 +49,7 @@ class AnalysisAgent:
 
     def get_remaining_analyses(self) -> int:
         """Get remaining analyses for today."""
+        self._init_state()
         return max(0, st.session_state.analysis_limit - st.session_state.analysis_count)
 
     def analyze_report(self, data: dict, system_prompt: str, chat_history: list = None) -> dict:
@@ -60,6 +61,7 @@ class AnalysisAgent:
             system_prompt: Base system prompt from SPECIALIST_PROMPTS
             chat_history: Previous messages in the current session (optional)
         """
+        self._init_state()
         can_analyze, error_msg = self.check_rate_limit()
         if not can_analyze:
             return {"success": False, "error": error_msg}
